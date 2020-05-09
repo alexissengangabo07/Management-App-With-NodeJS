@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<form action="{{ endpoint }}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">
+                <b>Nom du client</b>
+        </label>
+        <input type="text" id="name" name="name" class="form-control" value="{{ client.name }}" />
+    </div>
+    <div class="form-group">
+        <label for="number">
+                <b>Numero de telephone </b>
+        </label>
+        <input type="number" id="number" name="number" class="form-control" value="{{ client.number }}" />
+    </div>
+    <div class="form-group">
+        <label for="description">
+            <b>Description du client</b>
+        </label>
+        <textarea name="description" id="description" class="form-control">{{ client.description }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="picture">
+            <b>Photo </b>
+        </label>
+        <input type="file" id="file" name="file" />
+    </div>
+    
+    <div class="form-group">
+        <b>Type :</b>
+        <select name="types" id="types[]" class="form-control">
+                {% for type in types %}
+                    <option value="{{type._id}}"  {% if client.types.indexOf(type._id) != -1 %}selected{% endif %}>{{type.name}}</option>
+                {% endfor %}
+        </select>      
+    </div>
+    
+    <input type="submit" value="Enregistrer" class="btn btn-primary">
+</form>
+
+{% endblock %}

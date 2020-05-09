@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>NODE JS</title>
+</head>
+<body>
+    <div class="container">
+        <div style="padding-bottom: 35px;">
+            <a href="/"><h5>HUB | Gestion des clients</h5></a>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+        <hr />
+        <div align="center" id="date">&copy; Alex Creatives </div>
+    </div>
+    <script>
+        var d = new Date();
+        var dom = document.querySelector('#date');
+
+        dom.textContent += d.getFullYear();
+    </script>
+</body>
+</html>

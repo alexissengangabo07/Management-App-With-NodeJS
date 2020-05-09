@@ -1,0 +1,30 @@
+{% extends '../layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="/uploads//{{client.picture}}" alt="{{ client.name }}" style="width: 100%; height: 100%;">
+        </div>
+        <div class="col-sm-8">
+            <h2>
+                {{ client.name }}
+            </h2>
+            <div>
+                <small style="color: gray;"> Num tel: {{ client.number }}</small>
+            </div>
+            <a href="/edit/{{client._id}}" class="btn btn-info" title="Editer {{ client.name }}">Editer</a>
+            <a href="/delete/{{client._id}}" class="btn btn-danger" title="Supprimer {{ client.name }}" onclick="return confirm('Etes-vous sur de vouloir supprimer {{client.name}}')">Supprimer</a>
+            <hr/>
+            <p class="lead">
+                {{ client.description }}
+            </p>
+            <h3> Types : </h3>
+            {% for t in client.types %}
+                <a href="/types/{{t.name}}" class="btn btn-primary btn-sm" style="background-color: {{t.color}}">
+                    {{ t.name }}
+                </a>
+                &nbsp;&nbsp;
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

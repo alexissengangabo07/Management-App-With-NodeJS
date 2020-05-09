@@ -1,0 +1,17 @@
+{% extends '../layout.html' %}
+
+{% block content %}
+    <a href="/new" class="btn btn-primary"> Ajouter Un Client </a>
+    <hr/>
+    <h2>Liste Des Clients</h2>
+    {% for cl in recupclient %}
+        <div class="card" style="margin-bottom: 2%;">
+            <div class="card-header">
+                <a href="/{{cl._id}}"> {{ cl.name }} </a>
+            </div>
+            <div class="card-body">
+                {{ cl.description }}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
